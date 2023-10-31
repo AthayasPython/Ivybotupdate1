@@ -1,0 +1,52 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Hi! I am a bot {bot.user}!')
+
+@bot.command()
+async def heh(ctx, count_heh = 5):
+    await ctx.send("he" * count_heh)
+
+@bot.command()
+async def cara_mengurangi_sampah_dirumah(ctx):
+    await ctx.send('''
+-memisahkan sampah rumah tangga
+-melakukan zero waste
+-membuat pupuk sampah organik
+-membersihkan tempat sampah tiap hari
+-melakukan daur ulang pada sampah organik
+                    ''')
+    
+@bot.command()
+async def cara_melakukan_melakukan_zero_waste(ctx):
+    await ctx.send("konservasi semua sumber daya dengan cara produksi, konsumsi, penggunaan kembali dan pemulihan produk, pengemasan tanpa pembakaran dan tanpa pembuangan ke tanah, air atau udara yang dapat mengancam lingkungan maupun kesehatan manusia itu sendiri.")
+
+@bot.command()
+async def cara_melakukan_daur_ulang(ctx):
+    await ctx.send("Menerapkan prinsip 3R merupakan salah satu langkah yang dapat dilakukan. 3R merupakan singkatan dari reduce (mengurangi sampah), reuse (menggunakan ulang sampah) , dan recycle (daur ulang sampah).")
+
+@bot.command()
+async def macam_macam_sampah(ctx):
+    await ctx.send("sampah organik, anorganik, serta Bahan Berbahaya dan Beracun (B3)")
+
+
+@bot.command()
+async def mem(ctx):
+    with open('C:\\Users\\Windows\\Documents\\M2L1\\Slide2.jpg', 'rb') as f:
+        # Mari simpan file perpustakaan/library Discord yang dikonversi dalam variabel ini!
+        picture = discord.File(f)
+   # Kita kemudian dapat mengirim file ini sebagai tolok ukur!
+    await ctx.send(file=picture)
+
+bot.run("MIAW")
